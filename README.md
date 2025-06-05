@@ -25,10 +25,11 @@ VITE_FETCHCITYURL=https://geocoding-api.open-meteo.com/v1/search?name
 ``` 
 
 ## fájlszerkezet
+```
 src/
 ├── UI/                  # Újrahasználható felhasználói felület (komponensek)
 ├── Contexts/            # Globális állapotkezelés (React Context API segítségével)
 ├── HelperFunctions/     # Segédfüggvények (pl. ikonfordítás, nap nevek lekérése)
 ├── App.tsx              # Fő alkalmazáskomponens
 ├── main.tsx             # Belépési pont az alkalmazáshoz
-
+```
