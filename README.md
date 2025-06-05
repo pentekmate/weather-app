@@ -1,7 +1,7 @@
 # Időjárás jelentő applikáció
 Kiválasztott településen vissza adja a várható időjárást.
 
-## Features
+## Főbb funkciók
 - Város kereső (Open-Meteo Geocoding API)
 - Korábban keresett város mentése böngészőben.
 - Jelenlegi időjárás mutatása.
@@ -23,4 +23,12 @@ npm run dev
 VITE_FORECAST_URL=https://api.open-meteo.com/v1/forecast
 VITE_FETCHCITYURL=https://geocoding-api.open-meteo.com/v1/search?name
 ``` 
+
+## fájlszerkezet
+src/
+├── UI/                  # Újrahasználható felhasználói felület (komponensek)
+├── Contexts/            # Globális állapotkezelés (React Context API segítségével)
+├── HelperFunctions/     # Segédfüggvények (pl. ikonfordítás, nap nevek lekérése)
+├── App.tsx              # Fő alkalmazáskomponens
+├── main.tsx             # Belépési pont az alkalmazáshoz
 
