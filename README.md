@@ -1,5 +1,10 @@
 # Időjárás jelentő applikáció
 Kiválasztott településen vissza adja a várható időjárást.
+## Tartalom  
+- [Főbb funkciók](#főbb-funkciók)  
+- [Telepítés](#telepítés)  
+- [‼️Fontos](#️fontos)  
+- [Fájlszerkezet](#fájszerkezet)  
 
 ## Főbb funkciók
 - Város kereső (Open-Meteo Geocoding API)
@@ -24,7 +29,7 @@ VITE_FORECAST_URL=https://api.open-meteo.com/v1/forecast
 VITE_FETCHCITYURL=https://geocoding-api.open-meteo.com/v1/search?name
 ``` 
 
-## fájlszerkezet
+## Fájlszerkezet
 ```
 src/
 ├── UI/                  # Újrahasználható felhasználói felület (komponensek)
