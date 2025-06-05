@@ -2,4 +2,6 @@
 @theme{
     --color-blue-100:#A3D4FA;
     --color-blue-200:#7CB9E8;
-}
+    --color-overlay:rgba(17, 24, 39, 0.5);
+}   
+

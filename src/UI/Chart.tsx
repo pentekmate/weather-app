@@ -9,28 +9,37 @@ export const LineChart = () => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [path, setPath] = useState<string | null>(null);
 
-  useEffect(() => {
+  const updateDimensions = () => {
     if (containerRef.current) {
       const { offsetWidth, offsetHeight } = containerRef.current;
       setDimensions({ width: offsetWidth, height: offsetHeight });
     }
-  }, []);
+  };
+
+  useEffect(() => {
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, [data]);
 
   useEffect(() => {
     if (data && dimensions.width > 0 && dimensions.height > 0) {
+      const { width, height } = dimensions;
+      const topPadding = 20;
+      const bottomPadding = 20;
+      const chartHeight = height - topPadding - bottomPadding;
+
       const max = Math.max(...data);
       const min = Math.min(...data);
-      const { width, height } = dimensions;
       const pointGap = width / (data.length - 1);
 
       const points = data.map((temp, idx) => {
         const x = idx * pointGap;
-        const y = height - ((temp - min) / (max - min)) * height;
+        const y = topPadding + (1 - (temp - min) / (max - min)) * chartHeight;
         return `${x},${y}`;
       });
 
-      const innerPath = `M ${points.join(" L ")}`;
-      setPath(innerPath);
+      setPath(`M ${points.join(" L ")}`);
     }
   }, [data, dimensions]);
 
@@ -41,14 +50,15 @@ export const LineChart = () => {
   return (
     <div
       ref={containerRef}
-      className="border-white rounded-md border relative w-full h-52"
+      className="border-white rounded-md border-2 relative w-full h-52"
     >
-      <div className="absolute border border-white h-[1px] w-full top-1/2" />
-      <div className="absolute border border-white h-[1px] w-full top-20" />
-      <div className="absolute border border-white h-[1px] w-full bottom-20" />
+      <div className="absolute border border-white h-[0.5px] opacity-50 w-full top-1/2" />
+      <div className="absolute border border-white h-[0.5px] opacity-50 w-full top-5" />
+      <div className="absolute border border-white h-[0.5px] opacity-50 w-full bottom-5" />
+
       {path && (
         <svg width={dimensions.width} height={dimensions.height} className="stroke-white fill-none">
-          <path d={path} strokeWidth={2} />
+          <path d={path} strokeWidth={1} />
         </svg>
       )}
     </div>

@@ -6,19 +6,26 @@ import { Modal } from "./UI/Modal"
 import { WeeklyForecast } from "./UI/WeeklyForecast"
 
 function App() {
-  const {modalIsOpened} = useApp()
+  const {modalIsOpened,weatherData} = useApp()
   return (
-   <div className='w-screen h-screen flex justify-center bg-gradient-to-r from-blue-200 to-blue-100 relative'>
+   <div 
+   className='w-screen  h-screen md:px-[339px] px-6 md:gap-[156px] gap-[60px] flex-col flex md:flex-row justify-center md:py-[100px] py-[51px] bg-gradient-to-r from-blue-200 to-blue-100 relative'>
     {modalIsOpened && (
       <Modal></Modal>
     )}
-      <div>
-        <CityCard></CityCard>
-      </div>
+      
+      <div className="md:w-1/4 flex md:justify-end w-full">
+         <CityCard></CityCard> 
+      </div> 
+     
 
-      <div>
-          <WeeklyForecast></WeeklyForecast>
+      <div className="md:w-3/4 w-full">
+        {
+          weatherData &&  <WeeklyForecast></WeeklyForecast>
+        }
+         
       </div>
+        <span className="block md:hidden absolute left-1/2 bottom-0 w-2/4 text-white transform -translate-x-1/2">Péntek Máté Miklós</span>
    </div>
   )
 }
