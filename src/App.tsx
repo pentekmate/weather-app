@@ -9,7 +9,7 @@ function App() {
   const {modalIsOpened,weatherData} = useApp()
   return (
    <div 
-   className='w-screen  h-screen md:px-[339px] px-6 md:gap-[156px] gap-[60px] flex-col flex md:flex-row justify-center md:py-[100px] py-[51px] bg-gradient-to-r from-blue-200 to-blue-100 relative'>
+   className='w-screen  h-screen lg::px-[339px] md:px-[150px] px-6 md:gap-[156px] gap-[60px] flex-col flex md:flex-row justify-center md:py-[100px] py-[51px] bg-gradient-to-r from-blue-200 to-blue-100 relative'>
     {modalIsOpened && (
       <Modal></Modal>
     )}
